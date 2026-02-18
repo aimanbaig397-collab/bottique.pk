@@ -24,6 +24,9 @@
         .btn-pink { transition: transform 0.2s, box-shadow 0.2s; }
         .btn-pink:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(233,30,140,0.35); }
         .letter-wide { letter-spacing: 0.2em; }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
+        .nav-link:hover::after { width: 100%; }
         @media (max-width: 767px) { body.menu-open { overflow: hidden; } }
         .mobile-menu { transition: transform 0.3s ease, opacity 0.3s ease; }
         .mobile-menu:not(.open) { transform: translateX(100%); opacity: 0; pointer-events: none; }
@@ -38,14 +41,13 @@
                 <span class="font-serif text-lg sm:text-xl font-medium tracking-wide truncate">Andreas Boutiques</span>
             </a>
             <ul class="hidden md:flex items-center gap-6 lg:gap-8 font-sans text-sm font-light letter-wide uppercase text-gray-dark/90">
-                <li><a href="index.html" class="hover:text-pink transition-colors">Home</a></li>
-                <li><a href="features.html" class="hover:text-pink transition-colors">Features</a></li>
-                <li><a href="collections.html" class="hover:text-pink transition-colors">Collections</a></li>
-                <li><a href="featured.html" class="hover:text-pink transition-colors">Featured</a></li>
-                <li><a href="our-story.html" class="hover:text-pink transition-colors">Our Story</a></li>
-                <li><a href="lookbook.html" class="hover:text-pink transition-colors">Lookbook</a></li>
-                <li><a href="contact.html" class="text-pink font-medium">Contact</a></li>
-                <li><a href="cart.html" class="hover:text-pink transition-colors">Cart</a></li>
+                <li><a href="index.html" class="nav-link hover:text-pink transition-colors">Home</a></li>
+                <li><a href="features.html" class="nav-link hover:text-pink transition-colors">Features</a></li>
+                <li><a href="collections.html" class="nav-link hover:text-pink transition-colors">Collections</a></li>
+                <li><a href="featured.html" class="nav-link hover:text-pink transition-colors">Featured</a></li>
+                <li><a href="our-story.html" class="nav-link hover:text-pink transition-colors">Our Story</a></li>
+                <li><a href="contact.html" class="nav-link text-pink font-medium">Contact Us</a></li>
+                <li><a href="cart.html" class="nav-link hover:text-pink transition-colors">Cart</a></li>
             </ul>
             <div class="flex items-center gap-2 sm:gap-3">
                 <button type="button" class="md:hidden p-2.5 -mr-2 text-gray-dark hover:text-pink transition-colors rounded-lg" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="menuBtn">
@@ -67,18 +69,17 @@
             <a href="collections.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Collections</a>
             <a href="featured.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Featured</a>
             <a href="our-story.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Our Story</a>
-            <a href="lookbook.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Lookbook</a>
             <a href="contact.html" class="py-3 border-b border-gray-light text-pink">Contact Us</a>
             <a href="cart.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Cart</a>
         </nav>
     </div>
 
-    <main class="pt-20 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 min-h-screen">
-        <div class="max-w-4xl mx-auto">
+    <main class="pt-20 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 min-h-screen w-full">
+        <div class="max-w-7xl mx-auto w-full">
             <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-gray-dark mb-2">Contact Us</h1>
             <p class="font-sans text-gray-mid mb-8 sm:mb-12 text-sm sm:text-base">Get in touch for orders, appointments, or any questions.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-12 sm:mb-16 w-full">
                 <div>
                     <h2 class="font-serif text-xl text-gray-dark mb-4">Send a message</h2>
                     <form class="space-y-4">

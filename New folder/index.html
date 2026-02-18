@@ -257,21 +257,49 @@
             transition-delay: 0.5s;
         }
         /* Mobile menu */
+        
         @media (max-width: 767px) {
-            body.menu-open { overflow: hidden; }
+            body.menu-open {
+                overflow: hidden;
+            }
         }
+        
         .mobile-menu {
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
+        
         .mobile-menu:not(.open) {
             transform: translateX(100%);
             opacity: 0;
             pointer-events: none;
         }
+        
         .mobile-menu.open {
             transform: translateX(0);
             opacity: 1;
             pointer-events: auto;
+        }
+        /* Featured carousel */
+        
+        .featured-carousel-track {
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .featured-carousel-btn {
+            transition: opacity 0.2s ease, background 0.2s ease;
+        }
+        
+        .featured-carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .featured-dot {
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        
+        .featured-dot.active {
+            background: currentColor;
+            transform: scale(1.2);
         }
     </style>
 </head>
@@ -294,7 +322,6 @@
                 <li><a href="collections.html" class="nav-link hover:text-pink transition-colors duration-300">Collections</a></li>
                 <li><a href="featured.html" class="nav-link hover:text-coral transition-colors duration-300">Featured</a></li>
                 <li><a href="our-story.html" class="nav-link hover:text-pink transition-colors duration-300">Our Story</a></li>
-                <li><a href="lookbook.html" class="nav-link hover:text-pink transition-colors duration-300">Lookbook</a></li>
                 <li><a href="contact.html" class="nav-link hover:text-pink transition-colors duration-300">Contact Us</a></li>
                 <li><a href="cart.html" class="nav-link hover:text-pink transition-colors duration-300">Cart</a></li>
             </ul>
@@ -318,7 +345,6 @@
             <a href="collections.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Collections</a>
             <a href="featured.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Featured</a>
             <a href="our-story.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Our Story</a>
-            <a href="lookbook.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Lookbook</a>
             <a href="contact.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Contact Us</a>
             <a href="cart.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Cart</a>
         </nav>
@@ -405,7 +431,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
                 <a href="product-details.html" class="group block rounded-2xl overflow-hidden bg-white border border-gray-light shadow-sm card-hover card-shine" data-animate>
                     <div class="aspect-[3/4] overflow-hidden bg-gray-light">
-                        <img src="https://picsum.photos/id/11/600/800" alt="Bridal collection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 img-reveal" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iODAwIj48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIvPjx0ZXh0IGZpbGw9IiM5Y2EzYWYiIHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkJyaWRhbDwvdGV4dD48L3N2Zz4='">
+                        <img src="https://images.unsplash.com/photo-1594552072238-fb33e84ebf63?w=600&q=85" alt="Bridal collection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 img-reveal" loading="lazy" decoding="async" referrerpolicy="no-referrer">
                     </div>
                     <div class="p-5">
                         <h3 class="font-serif text-xl text-gray-dark">Bridal</h3>
@@ -414,7 +440,8 @@
                 </a>
                 <a href="product-details.html" class="group block rounded-2xl overflow-hidden bg-white border border-gray-light shadow-sm card-hover card-shine" data-animate>
                     <div class="aspect-[3/4] overflow-hidden bg-gray-light">
-                        <img src="https://images.unsplash.com/photo-1566174053879-31525623c5d6?w=600&q=85" alt="Evening gowns" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 img-reveal" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iODAwIj48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIvPjx0ZXh0IGZpbGw9IiM5Y2EzYWYiIHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkV2ZW5pbmc8L3RleHQ+PC9zdmc+'">
+                        <img src="https://images.unsplash.com/photo-1566174053879-31525623c5d6?w=600&q=85" alt="Evening gowns" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 img-reveal" loading="lazy" decoding="async" referrerpolicy="no-referrer"
+                            onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iODAwIj48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIvPjx0ZXh0IGZpbGw9IiM5Y2EzYWYiIHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkV2ZW5pbmc8L3RleHQ+PC9zdmc+'">
                     </div>
                     <div class="p-5">
                         <h3 class="font-serif text-xl text-gray-dark">Evening Gowns</h3>
@@ -423,7 +450,8 @@
                 </a>
                 <a href="product-details.html" class="group block rounded-2xl overflow-hidden bg-white border border-gray-light shadow-sm card-hover card-shine" data-animate>
                     <div class="aspect-[3/4] overflow-hidden bg-gray-light">
-                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=85" alt="Fancy articles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 img-reveal" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iODAwIj48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIvPjx0ZXh0IGZpbGw9IiM5Y2EzYWYiIHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZhbmN5PC90ZXh0Pjwvc3ZnPg=='">
+                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=85" alt="Fancy articles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 img-reveal" loading="lazy" decoding="async" referrerpolicy="no-referrer"
+                            onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iODAwIj48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIvPjx0ZXh0IGZpbGw9IiM5Y2EzYWYiIHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZhbmN5PC90ZXh0Pjwvc3ZnPg=='">
                     </div>
                     <div class="p-5">
                         <h3 class="font-serif text-xl text-gray-dark">Fancy Articles</h3>
@@ -438,9 +466,33 @@
         <div class="max-w-6xl mx-auto">
             <h2 class="font-serif text-3xl sm:text-4xl font-light text-gray-dark mb-4 sm:mb-6 text-center" data-animate>Featured</h2>
             <p class="text-gray-mid max-w-xl mx-auto mb-8 sm:mb-12 text-center text-sm sm:text-base" data-animate>Your wedding dress and occasion wear, crafted with care.</p>
-            <a href="product-details.html" class="block rounded-2xl overflow-hidden bg-gray-light shadow-lg card-hover card-shine max-w-4xl mx-auto" data-animate>
-                <img src="https://picsum.photos/id/14/900/563" alt="Featured wedding dress" class="w-full aspect-[16/10] object-cover transition-transform duration-700 hover:scale-105 img-reveal" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTYzIj48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjU2MyIvPjx0ZXh0IGZpbGw9IiM5Y2EzYWYiIHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZlYXR1cmVkPC90ZXh0Pjwvc3ZnPg=='">
-            </a>
+            <div class="max-w-4xl mx-auto relative rounded-2xl overflow-hidden bg-gray-light shadow-lg" data-animate>
+                <div class="featured-carousel relative overflow-hidden rounded-2xl aspect-[16/10] sm:aspect-[2/1]">
+                    <div id="featuredTrack" class="featured-carousel-track flex h-full">
+                        <a href="product-details.html" class="featured-slide flex-shrink-0 w-full h-full block">
+                            <img src="https://images.unsplash.com/photo-1594552072238-fb33e84ebf63?w=900&q=85" alt="Featured wedding dress" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                        </a>
+                        <a href="product-details.html" class="featured-slide flex-shrink-0 w-full h-full block">
+                            <img src="https://images.unsplash.com/photo-1566174053879-31525623c5d6?w=900&q=85" alt="Evening gown" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                        </a>
+                        <a href="product-details.html" class="featured-slide flex-shrink-0 w-full h-full block">
+                            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=900&q=85" alt="Fancy articles" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                        </a>
+                    </div>
+                    <button type="button" id="featuredPrev" class="featured-carousel-btn absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 text-gray-dark shadow-md flex items-center justify-center hover:bg-white z-10" aria-label="Previous slide">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button type="button" id="featuredNext" class="featured-carousel-btn absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 text-gray-dark shadow-md flex items-center justify-center hover:bg-white z-10"
+                        aria-label="Next slide">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                    <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-10">
+                        <button type="button" id="featuredDot0" class="featured-dot active w-2 h-2 rounded-full bg-pink/80 text-pink" aria-label="Go to slide 1"></button>
+                        <button type="button" id="featuredDot1" class="featured-dot w-2 h-2 rounded-full bg-white/80" aria-label="Go to slide 2"></button>
+                        <button type="button" id="featuredDot2" class="featured-dot w-2 h-2 rounded-full bg-white/80" aria-label="Go to slide 3"></button>
+                    </div>
+                </div>
+            </div>
             <p class="text-center mt-6" data-animate>
                 <a href="product-details.html" class="inline-block bg-pink text-white font-sans text-sm letter-wide uppercase py-3 px-8 rounded-lg btn-pink">View featured</a>
             </p>
@@ -452,31 +504,12 @@
             <h2 class="font-serif text-3xl sm:text-4xl font-light text-gray-dark mb-6 sm:mb-10 text-center" data-animate>Our Story</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center">
                 <div class="rounded-2xl overflow-hidden shadow-lg aspect-[4/3] bg-gray-light" data-animate>
-                    <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=700&q=85" alt="Boutique" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105 img-reveal" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MDAiIGhlaWdodD0iNTI1Ij48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iNzAwIiBoZWlnaHQ9IjUyNSIvPjwvc3ZnPg=='">
+                    <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=700&q=85" alt="Boutique" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105 img-reveal" loading="lazy" decoding="async" referrerpolicy="no-referrer"
+                        onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MDAiIGhlaWdodD0iNTI1Ij48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iNzAwIiBoZWlnaHQ9IjUyNSIvPjwvc3ZnPg=='">
                 </div>
                 <div class="text-gray-mid" data-animate>
                     <p class="mb-4">Andreas Boutiques brings together bridal and occasion wear with the finest lace, silk, and craftsmanship.</p>
                     <p>Visit us for a personal fitting or browse our collections online.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery" class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="font-serif text-3xl sm:text-4xl font-light text-gray-dark mb-6 sm:mb-10 text-center" data-animate>Lookbook</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                <div class="rounded-xl overflow-hidden aspect-[3/4] bg-gray-light card-hover" data-animate>
-                    <img src="https://images.unsplash.com/photo-1519657337289-077653f724ed?w=400&q=85" alt="Bridal look" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTMzIj48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUzMyIvPjwvc3ZnPg=='">
-                </div>
-                <div class="rounded-xl overflow-hidden aspect-[3/4] bg-gray-light card-hover" data-animate>
-                    <img src="https://images.unsplash.com/photo-1566174053879-31525623c5d6?w=400&q=85" alt="Evening look" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTMzIj48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUzMyIvPjwvc3ZnPg=='">
-                </div>
-                <div class="rounded-xl overflow-hidden aspect-[3/4] bg-gray-light card-hover" data-animate>
-                    <img src="https://images.unsplash.com/photo-1578932750294-f5075e85f44a?w=400&q=85" alt="Dress detail" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTMzIj48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUzMyIvPjwvc3ZnPg=='">
-                </div>
-                <div class="rounded-xl overflow-hidden aspect-[3/4] bg-gray-light card-hover" data-animate>
-                    <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=400&q=85" alt="Wedding style" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTMzIj48cmVjdCBmaWxsPSIjZjBmMGYwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUzMyIvPjwvc3ZnPg=='">
                 </div>
             </div>
         </div>
@@ -519,6 +552,7 @@
             var menuBtn = document.getElementById('menuBtn');
             var closeBtn = document.getElementById('closeMenu');
             var mobileMenu = document.getElementById('mobileMenu');
+
             function openMenu() {
                 if (mobileMenu) {
                     mobileMenu.classList.add('open');
@@ -527,6 +561,7 @@
                 }
                 if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
             }
+
             function closeMenu() {
                 if (mobileMenu) {
                     mobileMenu.classList.remove('open');
@@ -542,6 +577,40 @@
                     link.addEventListener('click', closeMenu);
                 });
             }
+        })();
+        (function() {
+            var track = document.getElementById('featuredTrack');
+            var prevBtn = document.getElementById('featuredPrev');
+            var nextBtn = document.getElementById('featuredNext');
+            var dots = [document.getElementById('featuredDot0'), document.getElementById('featuredDot1'), document.getElementById('featuredDot2')];
+            var total = 3;
+            var current = 0;
+
+            function goTo(i) {
+                current = (i + total) % total;
+                if (track) track.style.transform = 'translateX(-' + current * 100 + '%)';
+                dots.forEach(function(d, j) {
+                    if (d) {
+                        d.classList.toggle('active', j === current);
+                        d.classList.toggle('bg-pink/80', j === current);
+                        d.classList.toggle('bg-white/80', j !== current);
+                    }
+                });
+            }
+            if (prevBtn) prevBtn.addEventListener('click', function() {
+                goTo(current - 1);
+            });
+            if (nextBtn) nextBtn.addEventListener('click', function() {
+                goTo(current + 1);
+            });
+            dots.forEach(function(d, i) {
+                if (d) d.addEventListener('click', function() {
+                    goTo(i);
+                });
+            });
+            setInterval(function() {
+                goTo(current + 1);
+            }, 5000);
         })();
     </script>
 </body>

@@ -24,30 +24,59 @@
         .btn-pink { transition: transform 0.2s, box-shadow 0.2s; }
         .btn-pink:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(233,30,140,0.35); }
         .letter-wide { letter-spacing: 0.2em; }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
+        .nav-link:hover::after { width: 100%; }
+        @media (max-width: 767px) { body.menu-open { overflow: hidden; } }
+        .mobile-menu { transition: transform 0.3s ease, opacity 0.3s ease; }
+        .mobile-menu:not(.open) { transform: translateX(100%); opacity: 0; pointer-events: none; }
+        .mobile-menu.open { transform: translateX(0); opacity: 1; pointer-events: auto; }
     </style>
 </head>
 <body class="bg-gray-soft text-gray-dark font-sans antialiased">
     <header class="fixed top-0 left-0 right-0 z-50 glass">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2 text-gray-dark hover:text-pink transition-colors group">
-                <span class="flex-shrink-0 w-9 h-9 text-pink"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M14 12h12v2.5H14V12zm0 6h12v2.5H14V18zm0 6h8v2.5h-8V24z" fill="currentColor"/></svg></span>
-                <span class="font-serif text-xl font-medium tracking-wide">Andreas Boutiques</span>
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between" aria-label="Main">
+            <a href="index.html" class="flex items-center gap-2 text-gray-dark hover:text-pink transition-colors min-w-0">
+                <span class="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 text-pink"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 11 L12 29 M20 11 L28 29 M14 20 L26 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="font-serif text-lg sm:text-xl font-medium tracking-wide truncate">Andreas Boutiques</span>
             </a>
-            <ul class="hidden md:flex items-center gap-8 font-sans text-sm font-light letter-wide uppercase text-gray-dark/90">
-                <li><a href="index.html#collections" class="hover:text-pink transition-colors">Collections</a></li>
-                <li><a href="index.html#featured" class="hover:text-coral transition-colors">Featured</a></li>
-                <li><a href="contact.html" class="hover:text-pink transition-colors">Contact</a></li>
-                <li><a href="cart.html" class="hover:text-pink transition-colors">Cart</a></li>
+            <ul class="hidden md:flex items-center gap-6 lg:gap-8 font-sans text-sm font-light letter-wide uppercase text-gray-dark/90">
+                <li><a href="index.html" class="nav-link hover:text-pink transition-colors">Home</a></li>
+                <li><a href="features.html" class="nav-link hover:text-pink transition-colors">Features</a></li>
+                <li><a href="collections.html" class="nav-link text-pink font-medium">Collections</a></li>
+                <li><a href="featured.html" class="nav-link hover:text-pink transition-colors">Featured</a></li>
+                <li><a href="our-story.html" class="nav-link hover:text-pink transition-colors">Our Story</a></li>
+                <li><a href="contact.html" class="nav-link hover:text-pink transition-colors">Contact Us</a></li>
+                <li><a href="cart.html" class="nav-link hover:text-pink transition-colors">Cart</a></li>
             </ul>
-            <a href="cart.html" class="text-gray-dark/80 hover:text-pink transition-colors" aria-label="Cart">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-            </a>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button type="button" class="md:hidden p-2.5 -mr-2 text-gray-dark hover:text-pink rounded-lg" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="menuBtn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+                <a href="cart.html" class="text-gray-dark/80 hover:text-pink transition-colors p-2 sm:p-0" aria-label="Cart">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                </a>
+            </div>
         </nav>
     </header>
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-40 bg-white pt-20 px-6 pb-8 overflow-y-auto md:hidden" aria-hidden="true">
+        <button type="button" class="absolute top-4 right-4 p-2 text-gray-dark hover:text-pink rounded-lg" aria-label="Close menu" id="closeMenu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <nav class="flex flex-col gap-1 mt-4 font-sans text-sm letter-wide uppercase text-gray-dark/90">
+            <a href="index.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Home</a>
+            <a href="features.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Features</a>
+            <a href="collections.html" class="py-3 border-b border-gray-light text-pink">Collections</a>
+            <a href="featured.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Featured</a>
+            <a href="our-story.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Our Story</a>
+            <a href="contact.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Contact Us</a>
+            <a href="cart.html" class="py-3 border-b border-gray-light hover:text-pink transition-colors">Cart</a>
+        </nav>
+    </div>
 
-    <main class="pt-24 pb-16 px-6 min-h-screen">
+    <main class="pt-20 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 min-h-screen">
         <div class="max-w-6xl mx-auto">
-            <a href="index.html#collections" class="inline-flex items-center gap-2 text-gray-mid hover:text-pink text-sm mb-8 transition-colors">← Back to Collections</a>
+            <a href="collections.html" class="inline-flex items-center gap-2 text-gray-mid hover:text-pink text-sm mb-8 transition-colors">← Back to Collections</a>
 
             <div class="grid md:grid-cols-2 gap-12 items-start">
                 <div class="aspect-[3/4] rounded-2xl overflow-hidden bg-gray-light">
@@ -78,21 +107,24 @@
         </div>
     </main>
 
-    <footer class="py-12 px-6 border-t border-pink/20 bg-white">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer class="py-10 sm:py-12 px-4 sm:px-6 border-t border-pink/20 bg-white">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-center md:text-left">
             <a href="index.html" class="flex items-center gap-2 text-gray-dark hover:text-pink transition-colors">
-                <span class="w-8 h-8 text-pink flex-shrink-0"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M14 12h12v2.5H14V12zm0 6h12v2.5H14V18zm0 6h8v2.5h-8V24z" fill="currentColor"/></svg></span>
+                <span class="w-8 h-8 text-pink flex-shrink-0"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 11 L12 29 M20 11 L28 29 M14 20 L26 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 <span class="font-serif text-xl tracking-wide">Andreas Boutiques</span>
             </a>
             <ul class="flex flex-wrap justify-center gap-6 font-sans text-sm letter-wide uppercase text-gray-mid">
+                <li><a href="features.html" class="hover:text-pink transition-colors">Features</a></li>
+                <li><a href="collections.html" class="hover:text-pink transition-colors">Collections</a></li>
                 <li><a href="contact.html" class="hover:text-pink transition-colors">Contact</a></li>
-                <li><a href="terms.html" class="hover:text-pink transition-colors">Terms & Conditions</a></li>
+                <li><a href="terms.html" class="hover:text-pink transition-colors">Terms</a></li>
                 <li><a href="cart.html" class="hover:text-pink transition-colors">Cart</a></li>
             </ul>
             <p class="text-xs text-gray-mid">© 2025 Andreas Boutiques</p>
         </div>
     </footer>
     <script>
+        (function(){var b=document.getElementById('menuBtn'),c=document.getElementById('closeMenu'),m=document.getElementById('mobileMenu');function openM(){if(m){m.classList.add('open');m.setAttribute('aria-hidden','false');document.body.classList.add('menu-open');}if(b)b.setAttribute('aria-expanded','true');}function closeM(){if(m){m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.classList.remove('menu-open');}if(b)b.setAttribute('aria-expanded','false');}if(b)b.addEventListener('click',openM);if(c)c.addEventListener('click',closeM);if(m)m.querySelectorAll('a').forEach(function(l){l.addEventListener('click',closeM);});})();
         document.getElementById('add-to-cart-form').addEventListener('submit', function(e) {
             e.preventDefault();
             var qty = this.qty.value;
